@@ -1,6 +1,7 @@
 <script>
 	import Nested from './Nested.svelte'
 	import Info from './Info.svelte'
+	import Outer from './Outer.svelte';
 
 	let name = 'svelte';
 	let string = `this string contains some <strong>HTML!!!</strong>`;
@@ -41,6 +42,10 @@
 	function toggle() {
 		user.loggedIn = !user.loggedIn;
 	}
+
+	function handleMessage(event) {
+		console.log(event.detail.count);
+	}
 </script>
 
 <style>
@@ -79,3 +84,5 @@
 {#each cats as cat, i}
 <p>{i + 1}) {cat.id}: {cat.name}</p>
 {/each}
+
+<Outer on:count={handleMessage}/>
